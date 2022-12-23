@@ -1,14 +1,18 @@
 <template>
-  <h1>Result</h1>
+  <h1>Result Detail</h1>
+  <div v-if="pending || !result"> Loading ... </div>
+  <div v-else>
+    <CoopResultResponseDetail :result="result" />
+  </div>
 </template>
 
-<!-- <script></script> -->
-<script setup>
+<script setup lang="ts">
 const route = useRoute()
-console.log(route.params)
-const baseURL  = "https://api.splatnet3.com/v1/results/"
-const { data } = await useFetch(`${baseURL}${route.params.salmonId}`)
+const runtimeConfig = useRuntimeConfig()
+const {
+  pending,
+  data,
+} = await useFetch<CoopResultResponse>(`${runtimeConfig.public.apiUrlBase}v1/results/${route.params.salmonId}`)
 console.log(data.value)
-// console.log(data.value.myResult)
-console.log(Object.keys(data.value))
+const result = data.value
 </script>
