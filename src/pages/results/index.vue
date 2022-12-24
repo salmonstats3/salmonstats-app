@@ -7,7 +7,7 @@
       <!-- <small>{{ page }} page</small> -->
     </div>
     <CoopResultResponseListItem v-for="result in results" :key="`result-${result.salmonId}`" :result="result" />
-    <InfiniteLoading @infinite="loadData" class="inifinite-loading"/>
+    <InfiniteLoading @infinite="loadData" class="inifinite-loading" />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ const results = ref<CoopResultResponse[]>([])
 const page = ref(1)
 const total = ref(0)
 
-const loadData = async($state: any) => {
+const loadData = async ($state: any) => {
   page.value++
   await fetchResults()
   if (results.value.length === 0) $state.complete()
@@ -36,15 +36,15 @@ const {
 } = await useLazyFetch<ApiResults>(`${runtimeConfig.public.apiUrlBase}v1/results`, {
   key: `results-page-${page.value}`,
   params: {
-    offset: (25 * (page.value -1)),
+    offset: (25 * (page.value - 1)),
   },
 })
 
-const fetchResults = async() => {
+const fetchResults = async () => {
   data.value = await $fetch<ApiResults>(`${runtimeConfig.public.apiUrlBase}v1/results`, {
     method: "GET",
     query: {
-      offset: (25 * (page.value -1)),
+      offset: (25 * (page.value - 1)),
     },
   });
 }

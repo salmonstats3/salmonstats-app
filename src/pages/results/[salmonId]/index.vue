@@ -13,6 +13,5 @@ const {
   pending,
   data,
 } = await useFetch<CoopResultResponse>(`${runtimeConfig.public.apiUrlBase}v1/results/${route.params.salmonId}`)
-console.log(data.value)
 const result = data.value
 </script>
