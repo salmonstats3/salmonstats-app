@@ -3,6 +3,9 @@
     <div class="isClear">
       <span>{{ result.isClear ? 'Clear!!' : 'Failure' }}</span>
     </div>
+    <!-- <div class="isClear">
+      <span>ID: {{ result.salmonId }}</span>
+    </div> -->
     <div class="playTime">
       <span >{{ dayjs(result.playTime).format("YYYY/M/D hh:mm") }}</span>
     </div>

@@ -4111,6 +4111,11 @@ util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
+v3-infinite-loading@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/v3-infinite-loading/-/v3-infinite-loading-1.2.2.tgz#19565772cc255bd87369b3ad46090cb621a42d3b"
+  integrity sha512-MWJc6yChnqeUasBFJ3Enu8IGPcQgRMSTrAEtT1MsHBEx+QjwvNTaY8o+8V9DgVt1MVhQSl3MC55hsaWLJmpRMw==
+
 vite-node@^0.25.2:
   version "0.25.8"
   resolved "https://registry.yarnpkg.com/vite-node/-/vite-node-0.25.8.tgz#b1477e9d84b9e86dddc559542179ae3d34a264e9"
