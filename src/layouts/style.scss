@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "splatoon1jpja";
+  src: local("splatoon1jpja"),
+    url(assets/fonts/splatoon1jpja.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "splatoon2jpja";
+  src: local("splatoon2jpja"),
+    url(@/assets/fonts/splatoon2jpja.woff2) format("woff2");
+}
+
+html {
+  font-family: splatoon2jpja, splatoon1jpja;
+}

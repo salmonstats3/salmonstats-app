@@ -8,7 +8,7 @@
       <span>ID: {{ result.salmonId }}</span>
     </div> -->
     <div class="playTime">
-      <span>{{ dayjs(result.playTime).format($t('Widgets.StagesYearDatetimeFormat')) }}</span>
+      <span>{{ dayjs(result.playTime).format('YYYY MM/DD HH:mm:ss') }}</span>
     </div>
     <div class="ikura">
       <span>{{ result.goldenIkuraNum }}</span>
