@@ -6,11 +6,14 @@
       v-for="result in results"
       :result="result"
     />
+    <InfiniteLoading />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ApiResults } from '@/types/ApiResponse'
+// import InfiniteLoading from "v3-infinite-loading"
+
 const runtimeConfig = useRuntimeConfig()
 const {
   pending,

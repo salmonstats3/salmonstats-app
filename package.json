@@ -12,6 +12,7 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
-    "dayjs": "^1.11.7"
+    "dayjs": "^1.11.7",
+    "v3-infinite-loading": "^1.2.2"
   }
 }
