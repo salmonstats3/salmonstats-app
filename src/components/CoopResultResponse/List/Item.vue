@@ -1,13 +1,14 @@
 <template>
-  <div class="item" :class="result.isClear ? 'is-clear' : 'is-failure'" @click.top="$router.push(`results/${result.salmonId}`)">
+  <div class="item" :class="result.isClear ? 'is-clear' : 'is-failure'"
+    @click.top="$router.push(`results/${result.salmonId}`)">
     <div class="isClear">
-      <span>{{ result.isClear ? 'Clear!!' : 'Failure' }}</span>
+      <span>{{ result.isClear ? $t('CoopHistory.Clear') : $t('CoopHistory.Failure') }}</span>
     </div>
     <!-- <div class="isClear">
       <span>ID: {{ result.salmonId }}</span>
     </div> -->
     <div class="playTime">
-      <span >{{ dayjs(result.playTime).format("YYYY/M/D hh:mm") }}</span>
+      <span>{{ dayjs(result.playTime).format('YYYY MM/DD HH:mm:ss') }}</span>
     </div>
     <div class="ikura">
       <span>{{ result.goldenIkuraNum }}</span>
@@ -34,6 +35,7 @@ const { result } = defineProps<Props>()
   display: flex;
   align-items: center;
 }
+
 /* .is-clear {
   background-color:orange;
 }
@@ -45,9 +47,11 @@ const { result } = defineProps<Props>()
   font-size: 16px;
   margin-right: 12px;
 }
+
 .playTime {
   font-size: 12px;
 }
+
 .ikura {
   font-size: 14px;
   margin-left: auto;
