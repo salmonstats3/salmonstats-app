@@ -1,5 +1,4 @@
 <template>
-  <h1>Result Detail</h1>
   <div v-if="pending || !result"> Loading ... </div>
   <div v-else>
     <CoopResultResponseDetail :result="result" />
