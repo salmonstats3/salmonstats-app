@@ -23,7 +23,8 @@ type CoopWaveResultResponse = {
 //   waveId:
 //     type: number
 //     description: 1~4の値が入ります
-  eventType: EventId
+  eventType: EventType[keyof EventType]
+// eventType: EventId
 //   eventType:
 //     $ref: '#/components/schemas/EventId'
   waterLevel: WaterId
@@ -34,8 +35,8 @@ type CoopWaveResultResponse = {
 //     type: number
 //     nullable: true
 //     description: EX-WAVEでは常に`null`が入ります
-  goldenIkuarPopNum: number
-//   goldenIkuarPopNum:
+  goldenIkuraPopNum: number
+//   goldenIkuraPopNum:
 //     type: number
   quotaNum: number | null
 //   quotaNum:
