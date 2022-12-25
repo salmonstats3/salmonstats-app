@@ -11,12 +11,6 @@
 </template>
 
 <script setup lang="ts">
-// import { idToFilaName } from "@/util/special"
-// const SpUltraShot = require(`@/assets/images/${idToFilaName(1)}`)
-// const SpUltraShot = require(`../../../assets/images/${idToFilaName(1)}`)
-// const SpUltraShot = require(`../../../assets/images/7269f1fa71d746d7b86ca2a71fc24c6ea4c764077ee50d692f80eddeaff90f1d_0.png`)
-// const SpUltraShot = '@/assets/images/7269f1fa71d746d7b86ca2a71fc24c6ea4c764077ee50d692f80eddeaff90f1d_0.png'
-
 type Props = {
   specialId: CoopResultResponse["players"][number]['specialId'];
 };

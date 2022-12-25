@@ -79,7 +79,6 @@ const { weaponId } = defineProps<Props>();
 img {
   width: 16px;
   padding: 2px;
-  // background-color: rgba(0, 0, 0, .8);
   background-color: #212121;
   border-radius: 50%;
 }
