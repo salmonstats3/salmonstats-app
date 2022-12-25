@@ -1,6 +1,6 @@
 export type ApiResults = {
-  results: CoopResultResponse[]
-  limit: number
-  offset: number
-  total: number
-}
+  results: CoopResultResponse;
+  limit: number;
+  offset: number;
+  total: number;
+};

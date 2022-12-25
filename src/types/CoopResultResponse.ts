@@ -1,21 +1,23 @@
 type CoopResultResponse = {
-  salmonId: number
-  uuid: string
-  bossCounts: number[]
-  bossKillCounts: number[]
-  ikuraNum: number
-  goldenIkuraNum: number
-  goldenIkuraAssistNum: number
-  nightLess: boolean
-  dangerRate: number
-  playTime: string
-  isClear: boolean
-  failureWave: number | null
-  isBossDefeated: boolean | null
-  bossId: number | null
-  players: CoopPlayerResultResponse[]
-  waves: CoopWaveResultResponse[]
-}
+  salmonId: number;
+  uuid: string;
+  stageId: number;
+  bossCounts: number[];
+  bossKillCounts: number[];
+  ikuraNum: number;
+  goldenIkuraNum: number;
+  goldenIkuraAssistNum: number;
+  nightLess: boolean;
+  dangerRate: number;
+  playTime: string;
+  isClear: boolean;
+  failureWave: number | null;
+  isBossDefeated: boolean | null;
+  bossId: number | null;
+  schedule: CoopScheduleResponse;
+  players: CoopPlayerResultResponse[];
+  waves: CoopWaveResultResponse[];
+};
 // properties:
 //   salmonId:
 //     type: number
@@ -70,11 +72,9 @@ type CoopResultResponse = {
 //     type: array
 //     items:
 //       $ref: '#/components/schemas/CoopPlayerResultResponse'
-  waves:
-    minItems: 3
-    type: array
-    items:
-      $ref: '#/components/schemas/CoopWaveResultResponse'
+// waves: minItems: 3;
+// type: array;
+// items: $ref: "#/components/schemas/CoopWaveResultResponse";
 // required:
 //   - salmonId
 //   - uuid

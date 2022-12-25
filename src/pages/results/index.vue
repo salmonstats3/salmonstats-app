@@ -6,7 +6,9 @@
       <span>{{ results.length }}/{{ total }}件</span>
       <!-- <small>{{ page }} page</small> -->
     </div>
-    <CoopResultResponseListItem v-for="result in results" :key="`result-${result.salmonId}`" :result="result" />
+    <div class="coop-result-items">
+      <CoopResultResponseListItem v-for="result in results" :key="`result-${result.salmonId}`" :result="result" />
+    </div>
     <InfiniteLoading @infinite="loadData" class="inifinite-loading" />
   </div>
 </template>
@@ -33,7 +35,7 @@ const runtimeConfig = useRuntimeConfig()
 const {
   pending,
   data,
-} = await useLazyFetch<ApiResults>(`${runtimeConfig.public.apiUrlBase}v1/results`, {
+} = await useLazyFetch<ApiResults>(`${runtimeConfig.public.apiUrlBase}v1/results?offset=0&limit=25&sort=desc&order=playTime`, {
   key: `results-page-${page.value}`,
   params: {
     offset: (25 * (page.value - 1)),
@@ -41,7 +43,7 @@ const {
 })
 
 const fetchResults = async () => {
-  data.value = await $fetch<ApiResults>(`${runtimeConfig.public.apiUrlBase}v1/results`, {
+  data.value = await $fetch<ApiResults>(`${runtimeConfig.public.apiUrlBase}v1/results?offset=0&limit=25&sort=desc&order=playTime`, {
     method: "GET",
     query: {
       offset: (25 * (page.value - 1)),
@@ -66,7 +68,7 @@ watchEffect(() => {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .sticky {
   position: sticky;
   top: 0;
@@ -81,5 +83,10 @@ watchEffect(() => {
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+}
+
+.coop-result-items {
+  display: grid;
+  gap: 1px;
 }
 </style>
