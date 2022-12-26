@@ -64,7 +64,7 @@ const { pending, refresh } = useFetch<ApiResults>(
     left: 16px;
   }
 
-  background-color: #282828;
+  background-color: var(--color-background);
 
   .loading {
     height: 100vh;
@@ -76,7 +76,7 @@ const { pending, refresh } = useFetch<ApiResults>(
 .sticky {
   position: sticky;
   top: 0;
-  background-color: #282828;
+  background-color: var(--color-background);
   padding: 16px;
   font-size: 16px;
   text-align: right;

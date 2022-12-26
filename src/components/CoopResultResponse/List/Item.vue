@@ -37,17 +37,17 @@ const { result } = defineProps<Props>()
   color: azure;
 
   &.clear {
-    background-color: rgb(210, 100, 0);
+    background-color: var(--color-salmon-orange);
   }
 
   &.failure {
-    background-color: rgb(160, 100, 0);
+    background-color: var(--color-salmon-orange-darker);
   }
 
   &:hover,
   &:active {
     cursor: pointer;
-    background-color: rgb(130, 100, 0);
+    background-color: var(--color-red);
   }
 }
 
