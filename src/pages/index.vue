@@ -1,10 +1,7 @@
 <template>
   <div class="page">
-    <div>
-      <div class="sticky">
-        <span>{{ results.length }}/{{ total }}件</span>
-        <!-- <small>{{ page }} page</small> -->
-      </div>
+    <div class="loading" v-if="pending">Loading ...</div>
+    <div v-else>
       <div class="coop-result-list">
         <CoopResultResponseListItem v-for="result in results" :key="`result-${result.salmonId}`" :result="result" />
       </div>
@@ -60,32 +57,23 @@ const { pending, refresh } = useFetch<ApiResults>(
 
 <style lang="scss" scoped>
 .page {
-  padding: {
-    right: 16px;
-    left: 16px;
-  }
-
+  overflow: scroll;
   background-color: var(--color-background);
+  width: 100%;
+  min-width: 375px;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 29.5px;
 
   .loading {
-    height: 100vh;
     padding-top: 50px;
     text-align: center;
   }
 }
 
-.sticky {
-  position: sticky;
-  top: 0;
-  background-color: var(--color-background);
-  padding: 16px;
-  font-size: 16px;
-  text-align: right;
-}
-
-.infinite-loading {
+.inifinite-loading {
   margin: 0 auto;
-  padding: 20px;
   text-align: center;
 }
 
