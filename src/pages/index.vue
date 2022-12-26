@@ -5,12 +5,10 @@
         <span>{{ results.length }}/{{ total }}件</span>
         <!-- <small>{{ page }} page</small> -->
       </div>
-      <CoopResultResponseListItem
-        v-for="result in results"
-        :key="`result-${result.salmonId}`"
-        :result="result"
-      />
-      <InfiniteLoading @infinite="loadData" class="infinite-loading" />
+      <div class="coop-result-list">
+        <CoopResultResponseListItem v-for="result in results" :key="`result-${result.salmonId}`" :result="result" />
+      </div>
+      <InfiniteLoading @infinite="loadData" class="inifinite-loading" />
     </div>
     <div class="loading" v-if="pending">Loading ...</div>
   </div>
@@ -36,42 +34,45 @@ const loadData = async ($state: any) => {
 
 const runtimeConfig = useRuntimeConfig();
 const { pending, refresh } = useFetch<ApiResults>(
-    `${runtimeConfig.public.apiUrlBase}v1/results`,
-    {
-      method: "GET",
-      params: {
-        sort: "playTime",
-        order: "desc",
-      },
-      onRequest({options}) {
-        // NOTE: offsetの値がずっと変わらなかったのでonRequestで制御
-        if(options.params) {
-          options.params.offset = 25 * page.value
-        }
-      },
-      onResponse({ response }) {
-        const { results: resResults, total: resTotal } = response._data
-        results.value = [...results.value, ...resResults];
-        total.value = resTotal;
+  `${runtimeConfig.public.apiUrlBase}v1/results`,
+  {
+    method: "GET",
+    params: {
+      sort: "playTime",
+      order: "desc",
+    },
+    onRequest({ options }) {
+      // NOTE: offsetの値がずっと変わらなかったのでonRequestで制御
+      if (options.params) {
+        options.params.offset = 25 * page.value
       }
+    },
+    onResponse({ response }) {
+      const { results: resResults, total: resTotal } = response._data
+      results.value = [...results.value, ...resResults];
+      total.value = resTotal;
     }
+  }
 );
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .page {
   padding: {
     right: 16px;
     left: 16px;
   }
+
   background-color: #282828;
+
   .loading {
     height: 100vh;
     padding-top: 50px;
     text-align: center;
   }
 }
+
 .sticky {
   position: sticky;
   top: 0;
@@ -85,5 +86,10 @@ const { pending, refresh } = useFetch<ApiResults>(
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+}
+
+.coop-result-list {
+  display: grid;
+  gap: 1px;
 }
 </style>
