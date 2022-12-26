@@ -13,6 +13,8 @@
 :root {
   --font-family-s1: splatoon1, splatoon1jpja;
   --font-family-s2: splatoon2, splatoon2jpja;
+  --content-max-width: 768px;
+  --content-min-width: 375px;
   --color-yellow: #eaff3e;
   --color-blue: #603aff;
   --color-orange: #ff9650;
@@ -21,6 +23,7 @@
   --color-purple: #a64cf2;
   --color-green: #6af6cd;
   --color-background: #292e35;
+  --color-background-darker: #1e1e1e;
   --color-hero: #46fb28;
   --color-gesotown: #e1fd4b;
   --color-regular: var(--color-yellow);
@@ -32,4 +35,9 @@
   --color-salmon-orange: #df4b33;
   --color-salmon-orange-darker: #aa3f2f;
   --color-salmon-green: #00f82d;
+}
+
+.num::before {
+  content: "x";
+  padding-right: 2px;
 }

@@ -78,9 +78,4 @@ const { result } = defineProps<Props>()
     height: 14px;
   }
 }
-
-.num::before {
-  content: "x";
-  padding-right: 2px;
-}
 </style>
