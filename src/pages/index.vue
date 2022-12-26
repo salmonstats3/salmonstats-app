@@ -38,8 +38,9 @@ const { pending, refresh } = useFetch<ApiResults>(
   {
     method: "GET",
     params: {
-      sort: "playTime",
-      order: "desc",
+      sort: "desc",
+      order: "playTime",
+      offset: 25 * (page.value - 1),
     },
     onRequest({ options }) {
       // NOTE: offsetの値がずっと変わらなかったのでonRequestで制御
