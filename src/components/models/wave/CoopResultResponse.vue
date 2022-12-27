@@ -4,13 +4,25 @@ type Props = {
   wave: CoopResultResponse["waves"][number];
 };
 const { wave } = defineProps<Props>();
+
+const waterLevel = (waterLevel: number) => {
+  switch (waterLevel) {
+    case 0:
+      return "low"
+    case 1:
+      return "middle"
+    case 2:
+      return "high"
+  }
+}
 </script>
 
 <template>
   <div class="wave-result">
     <div class="wave-result-content">
+      <div class="wave-water-level" :class="waterLevel(wave.waterLevel)"></div>
       <div class="wave-num">
-        <span v-if="wave.waveId != 4">WAVE{{ wave.waveId }}</span>
+        <span v-if="wave.waveId != 4">WAVE {{ wave.waveId }}</span>
         <span v-else>{{ $t('CoopHistory.ExWave') }}</span>
         <span class="wave-result-tag">{{ $t(wave.isClear ? 'CoopHistory.Gj' : 'CoopHistory.Ng') }}</span>
       </div>
@@ -43,6 +55,41 @@ const { wave } = defineProps<Props>();
   margin: 0 auto;
   padding: 7px 0 4px;
   position: relative;
+}
+
+.wave-water-level {
+  &.high {
+    height: 50%;
+  }
+
+  &.middle {
+    height: 30%;
+  }
+
+  &.low {
+    height: 10%;
+  }
+
+  background: black;
+  bottom: 0;
+  content: "";
+  left: 0;
+  opacity: .15;
+  position: absolute;
+  right: 0;
+
+  &::before {
+    background: url("@/static/media/wave-bg.91c46cd1065b6e467f09.svg");
+    content: "";
+    height: 10px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 1px;
+    transform: translateY(-100%);
+    width: 100%;
+  }
+
 }
 
 .pop-num {
@@ -102,7 +149,7 @@ const { wave } = defineProps<Props>();
 }
 
 .wave-result-content {
-  background: var(--color-yellow);
+  background: var(--color-salmon-yellow);
   color: black;
   flex: 1 1;
   flex-direction: column;

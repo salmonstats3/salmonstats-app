@@ -9,44 +9,46 @@ const { players } = defineProps<Props>();
 </script>
 
 <template>
-  <div class="coop-result-member-result">
-    <template v-for="player in players" :key="player.pid">
-      <div class="member-name-content">
-        <div class="member-name">{{ player.name }}</div>
-        <div class="member-defeated-count">
-          <span>{{ $t('CoopHistory.Enemy') }}</span>
-          <span class="num">{{ player.bossKillCountsTotal }}</span>
-        </div>
-      </div>
-      <div class="member-weapon-content">
-        <div class="member-weapon-images">
-          <template v-for="weaponId in player.weaponList">
-            <Weapon :weaponId="weaponId" />
-          </template>
-          <Special :specialId="player.specialId" />
-        </div>
-      </div>
-      <div class="member-result-content-wrapper">
-        <div class="member-result-content">
-          <div class="golden-ikura">
-            <img src="@/static/media/gold-ikura.542af9c3faf6cd81f558fb11d2206995.svg" />
-            <span class="num">{{ player.goldenIkuraNum }}</span>
-          </div>
-          <div class="ikura">
-            <img src="@/static/media/ikura.b84a6213dc0a5053e99b63d9be7dd4d3.svg" />
-            <span class="num">{{ player.ikuraNum }}</span>
-          </div>
-          <div class="rescue">
-            <img src="@/static/media/helped-squid.de450df6088a71f5519d242fc581d49c.svg" />
-            <span class="num">{{ player.helpCount }}</span>
-          </div>
-          <div class="death">
-            <img src="@/static/media/holpen-squid.4913eb25a33651ac3d452c5c379e84b8.svg" />
-            <span class="num">{{ player.deadCount }}</span>
+  <div class="coop-result-member-result-wrapper">
+    <div class="coop-result-member-result">
+      <template v-for="player in players" :key="player.pid">
+        <div class="member-name-content">
+          <div class="member-name">{{ player.name }}</div>
+          <div class="member-defeated-count">
+            <span>{{ $t('CoopHistory.Enemy') }}</span>
+            <span class="num">{{ player.bossKillCountsTotal }}</span>
           </div>
         </div>
-      </div>
-    </template>
+        <div class="member-weapon-content">
+          <div class="member-weapon-images">
+            <template v-for="weaponId in player.weaponList">
+              <Weapon :weaponId="weaponId" />
+            </template>
+            <Special :specialId="player.specialId" />
+          </div>
+        </div>
+        <div class="member-result-content-wrapper">
+          <div class="member-result-content">
+            <div class="golden-ikura">
+              <img src="@/static/media/gold-ikura.542af9c3faf6cd81f558fb11d2206995.svg" />
+              <span class="num">{{ player.goldenIkuraNum }}</span>
+            </div>
+            <div class="ikura">
+              <img src="@/static/media/ikura.b84a6213dc0a5053e99b63d9be7dd4d3.svg" />
+              <span class="num">{{ player.ikuraNum }}</span>
+            </div>
+            <div class="rescue">
+              <img src="@/static/media/helped-squid.de450df6088a71f5519d242fc581d49c.svg" />
+              <span class="num">{{ player.helpCount }}</span>
+            </div>
+            <div class="death">
+              <img src="@/static/media/holpen-squid.4913eb25a33651ac3d452c5c379e84b8.svg" />
+              <span class="num">{{ player.deadCount }}</span>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 

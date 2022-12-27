@@ -57,8 +57,8 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
 
 <style lang="scss" scoped>
 .coop-result {
-  // height: 100vh;
   width: 100%;
+  height: calc(100% - 96px);
   min-width: var(--content-min-width);
   max-width: var(--content-max-width);
   margin: 0 auto;
@@ -93,7 +93,7 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
       }
 
       .ikura-num {
-        font-size: 32px;
+        font-size: 24px;
       }
     }
 

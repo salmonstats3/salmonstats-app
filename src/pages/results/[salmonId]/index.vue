@@ -1,8 +1,9 @@
 <template>
-  <div v-if="pending || !result"> Loading ... </div>
-  <div v-else>
-    <CoopResultResponseDetail :result="result" />
-  </div>
+  <template v-if="result === null">
+  </template>
+  <template v-else>
+    <CoopResultResponseDetail :result="result!" />
+  </template>
 </template>
 
 <script setup lang="ts">
