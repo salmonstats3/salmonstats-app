@@ -1,12 +1,12 @@
 <script setup lang="ts">
-// type Props = {
-//   specialId: number;
-// };
+type Props = {
+  specialId: number;
+};
 
-// const { specialId } = defineProps<Props>();
+const { specialId } = defineProps<Props>();
 </script>
 <template>
-  <!-- <img v-if="specialId === 1"
+  <img v-if="specialId === 1"
     src="@/assets/images/7269f1fa71d746d7b86ca2a71fc24c6ea4c764077ee50d692f80eddeaff90f1d_0.png" alt="">
   <img v-else-if="specialId === 20006"
     src="@/assets/images/bd327d1b64372dedefd32adb28bea62a5b6152d93aada5d9fc4f669a1955d6d4_0.png" alt="">
@@ -22,7 +22,7 @@
     src="@/assets/images/0785cb4979024a83aaa2196e287e232d5d7e4ac959895a650c30ed00fedbc714_0.png" alt="">
   <img v-else-if="specialId === 20014"
     src="@/assets/images/680379f8b83e5f9e033b828360827bc2f0e08c34df1abcc23de3d059fe2ac435_0.png" alt="">
-  <img v-else src="@/assets/weapons/unknown.png" alt="" /> -->
+  <img v-else src="@/assets/weapons/unknown.png" alt="" />
 </template>
 
 <style lang="scss" scoped>

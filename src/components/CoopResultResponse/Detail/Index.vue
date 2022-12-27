@@ -43,7 +43,7 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
       <div class="special-images" v-for="usages in specialUsage">
         <template v-for="specialId in usages">
           <span class="rounded-icon-wrapper">
-            <!-- <Special :specialId="specialId"></Special> -->
+            <Special :specialId="specialId"></Special>
           </span>
         </template>
       </div>

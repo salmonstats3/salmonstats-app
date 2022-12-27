@@ -23,7 +23,7 @@ const { players } = defineProps<Props>();
           <template v-for="weaponId in player.weaponList">
             <Weapon :weaponId="weaponId" />
           </template>
-          <!-- <Special :specialId="player.specialId" /> -->
+          <Special :specialId="player.specialId" />
         </div>
       </div>
       <div class="member-result-content-wrapper">
