@@ -2827,6 +2827,11 @@ make-dir@^3.1.0, make-dir@~3.1.0:
   dependencies:
     semver "^6.0.0"
 
+matrix-transpose@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/matrix-transpose/-/matrix-transpose-1.0.2.tgz#4672a7522f6547ec2f8a9848d22f31d42daa6b98"
+  integrity sha512-Gy3irmkXbS3vR9RGLewUwSRb2LEGD15d65YI0JKqm4Ei1yC1ATu5CS1zp/W43Dut3637NZJVrCg33OvJxp0bsw==
+
 mdn-data@2.0.14:
   version "2.0.14"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"

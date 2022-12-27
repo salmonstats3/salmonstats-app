@@ -70,7 +70,7 @@
 // -1 unknown.png
 // import { numToString } from  "@/util/weapon"
 type Props = {
-  weaponId: CoopResultResponse["players"][number]['weaponList'][number];
+  weaponId: number
 };
 const { weaponId } = defineProps<Props>();
 </script>

@@ -1,3 +1,17 @@
+<script setup lang="ts">
+import dayjs from "dayjs";
+import { transpose } from 'matrix-transpose';
+import Special from '@/components/models/special/Image.vue'
+type Props = {
+  result: CoopResultResponse;
+};
+const { result } = defineProps<Props>();
+const specialUsage: number[][] = transpose(result.players.map((player) => {
+  const specialId: number = player.specialId
+  return player.specialCounts.map((count) => Array(count).fill(specialId))
+})).map((value) => value.flatMap((value) => value))
+</script>
+
 <template>
   <div class="coop-result" :class="result.isClear ? 'clear' : 'failure'">
     <div class="coop-result-summary">
@@ -25,20 +39,21 @@
     <div class="coop-result-wave-results">
       <ModelsWaveCoopResultResponse class="wave-item" v-for="wave in result.waves" :wave="wave" :key="wave.waveId" />
     </div>
-    <!-- <ModelsPlayerCoopResultResponse :players="result.players" /> -->
+    <div class="coop-result-wave-results coop-result-special">
+      <div class="special-images" v-for="usages in specialUsage">
+        <template v-for="specialId in usages">
+          <span class="rounded-icon-wrapper">
+            <Special :specialId="specialId"></Special>
+          </span>
+        </template>
+      </div>
+    </div>
+    <ModelsPlayerCoopResultResponse :players="result.players" />
     <!-- <div style="margin-top: 100px">
       <p v-for="(item, key) in result"><small>{{ key }}</small> : <span>{{ item }}</span></p>
     </div> -->
   </div>
 </template>
-
-<script setup lang="ts">
-import dayjs from "dayjs";
-type Props = {
-  result: CoopResultResponse;
-};
-const { result } = defineProps<Props>();
-</script>
 
 <style lang="scss" scoped>
 .coop-result {
@@ -88,14 +103,37 @@ const { result } = defineProps<Props>();
       font-size: 12px;
     }
   }
+}
 
-  .coop-result-wave-results {
-    display: grid;
-    gap: 1px;
-    grid-auto-columns: minmax(25%, 100px);
-    grid-auto-flow: column;
-    margin: 0 10px;
-    position: relative;
-  }
+.special-images {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  grid-auto-flow: column;
+  justify-content: center;
+  margin-bottom: -3px;
+  margin-right: -3px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.coop-result-special {
+  display: grid;
+  gap: 1px;
+  grid-auto-columns: minmax(25%, 100px);
+  grid-auto-flow: column;
+  margin: 0 10px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.coop-result-wave-results {
+  display: grid;
+  gap: 1px;
+  grid-auto-columns: minmax(25%, 100px);
+  grid-auto-flow: column;
+  margin: 0 10px;
+  position: relative;
+  justify-content: center;
 }
 </style>
