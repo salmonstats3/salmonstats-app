@@ -106,9 +106,11 @@ const { players } = defineProps<Props>();
 }
 
 .member-weapon-content {
+  display: flex;
+  gap: 2px;
+  grid-template-columns: repeat(3, auto);
   align-items: center;
   background: var(--color-salmon-orange);
-  display: flex;
   font-family: var(--font-family-s2);
   justify-content: center;
   padding-right: 8px;
