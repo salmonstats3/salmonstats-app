@@ -1,7 +1,6 @@
 <template>
   <div class="page">
-    <div class="loading" v-if="pending">Loading ...</div>
-    <div v-else>
+    <div>
       <div class="sticky">
         <span>{{ results.length }}/{{ total }}件</span>
         <!-- <small>{{ page }} page</small> -->
@@ -11,8 +10,9 @@
         :key="`result-${result.salmonId}`"
         :result="result"
       />
-      <InfiniteLoading @infinite="loadData" class="inifinite-loading" />
+      <InfiniteLoading @infinite="loadData" class="infinite-loading" />
     </div>
+    <div class="loading" v-if="pending">Loading ...</div>
   </div>
 </template>
 
@@ -20,56 +20,43 @@
 import { ApiResults } from "@/types/ApiResponse";
 import InfiniteLoading from "v3-infinite-loading";
 const results = ref<CoopResultResponse[]>([]);
-const page = ref(1);
+const page = ref(0);
 const total = ref(0);
 
 const loadData = async ($state: any) => {
-  page.value++;
-  await fetchResults();
+  await refresh();
   if (results.value.length === 0) $state.complete();
   if (results.value.length % 25 === 0) {
     $state.loaded();
   } else {
     $state.complete();
   }
+  page.value++;
 };
 
 const runtimeConfig = useRuntimeConfig();
-const { pending, data } = await useLazyFetch<ApiResults>(
-  `${runtimeConfig.public.apiUrlBase}v1/results`,
-  {
-    key: `results-page-${page.value}`,
-    params: {
-      sort: "desc",
-      offset: 25 * (page.value - 1),
-    },
-  }
-);
-
-const fetchResults = async () => {
-  data.value = await $fetch<ApiResults>(
+const { pending, refresh } = useFetch<ApiResults>(
     `${runtimeConfig.public.apiUrlBase}v1/results`,
     {
       method: "GET",
-      query: {
-        sort: "desc",
-        offset: 25 * (page.value - 1),
+      params: {
+        sort: "playTime",
+        order: "desc",
       },
+      onRequest({options}) {
+        // NOTE: offsetの値がずっと変わらなかったのでonRequestで制御
+        if(options.params) {
+          options.params.offset = 25 * page.value
+        }
+      },
+      onResponse({ response }) {
+        const { results: resResults, total: resTotal } = response._data
+        results.value = [...results.value, ...resResults];
+        total.value = resTotal;
+      }
     }
-  );
-};
+);
 
-watchEffect(() => {
-  if (data.value?.results) {
-    results.value = [...results.value, ...data.value.results];
-    // 一覧 -> 詳細 -> 一覧（戻る）などの時に配列のデータがおかしい。重複があったり、IDの並びがおかしかったり。 useState とかで管理すれば大丈夫（？）
-    // results.value = [
-    //   ...results.value,
-    //   ...data.value.results.filter(newResult => results.value.map(e => e.salmonId).includes(newResult.salmonId))
-    // ]
-    total.value = data.value.total;
-  }
-});
 </script>
 
 <style scoped lang="scss">
@@ -94,7 +81,7 @@ watchEffect(() => {
   text-align: right;
 }
 
-.inifinite-loading {
+.infinite-loading {
   margin: 0 auto;
   padding: 20px;
   text-align: center;
