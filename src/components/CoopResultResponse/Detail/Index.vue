@@ -43,7 +43,7 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
       <div class="special-images" v-for="usages in specialUsage">
         <template v-for="specialId in usages">
           <span class="rounded-icon-wrapper">
-            <Special :specialId="specialId"></Special>
+            <!-- <Special :specialId="specialId"></Special> -->
           </span>
         </template>
       </div>
@@ -62,6 +62,7 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
   min-width: var(--content-min-width);
   max-width: var(--content-max-width);
   margin: 0 auto;
+  overflow: scroll;
 
   .coop-result-summary-content {
     background: var(--color-background-darker);
@@ -102,6 +103,22 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
       text-align: center;
       font-size: 12px;
     }
+  }
+}
+
+.rounded-icon-wrapper {
+  img {
+    object-fit: contain;
+    align-items: center;
+    background-color: black;
+    display: inline-grid;
+    justify-items: center;
+    border-radius: 26.66%;
+
+    width: 18px;
+    height: 18px;
+    margin-bottom: 3px;
+    margin-right: 3px;
   }
 }
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Weapon from "@/components/models/weapon/Image.vue"
+import Special from '@/components/models/special/Image.vue'
 // import { numToString } from "@/util/weapon"
 type Props = {
   players: CoopResultResponse["players"];
@@ -18,9 +19,12 @@ const { players } = defineProps<Props>();
         </div>
       </div>
       <div class="member-weapon-content">
-        <template v-for="weaponId in player.weaponList">
-          <Weapon :weaponId="weaponId" />
-        </template>
+        <div class="member-weapon-images">
+          <template v-for="weaponId in player.weaponList">
+            <Weapon :weaponId="weaponId" />
+          </template>
+          <!-- <Special :specialId="player.specialId" /> -->
+        </div>
       </div>
       <div class="member-result-content-wrapper">
         <div class="member-result-content">
@@ -100,14 +104,26 @@ const { players } = defineProps<Props>();
 }
 
 .member-weapon-content {
-  display: flex;
-  gap: 2px;
-  grid-template-columns: repeat(3, auto);
   align-items: center;
   background: var(--color-salmon-orange);
+  display: flex;
   font-family: var(--font-family-s2);
   justify-content: center;
   padding-right: 8px;
+}
+
+.member-weapon-images {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(3, auto);
+
+  img {
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    background-color: #212121;
+    border-radius: 26.66%;
+  }
 }
 
 .coop-result-member-result-wrapper {

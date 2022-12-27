@@ -1,3 +1,12 @@
+<script setup lang="ts">
+// -1 unknown.png
+// import { numToString } from  "@/util/weapon"
+type Props = {
+  weaponId: number
+};
+const { weaponId } = defineProps<Props>();
+</script>
+
 <template>
   <img v-if="weaponId === 0" src="@/assets/weapons/0_Shooter_Short_00.png" alt="">
   <img v-else-if="weaponId === 10" src="@/assets/weapons/10_Shooter_First_00.png" alt="">
@@ -66,15 +75,6 @@
   <img v-else src="@/assets/weapons/unknown.png" alt="">
 </template>
 
-<script setup lang="ts">
-// -1 unknown.png
-// import { numToString } from  "@/util/weapon"
-type Props = {
-  weaponId: number
-};
-const { weaponId } = defineProps<Props>();
-</script>
-
 <style lang="scss" scoped>
 img {
   width: 16px;
@@ -83,4 +83,3 @@ img {
   border-radius: 50%;
 }
 </style>
-

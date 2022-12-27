@@ -70,11 +70,9 @@ type CoopResultResponse = {
 //     type: array
 //     items:
 //       $ref: '#/components/schemas/CoopPlayerResultResponse'
-  waves:
-    minItems: 3
-    type: array
-    items:
-      $ref: '#/components/schemas/CoopWaveResultResponse'
+  3
+    array
+    '#/components/schemas/CoopWaveResultResponse'
 // required:
 //   - salmonId
 //   - uuid
