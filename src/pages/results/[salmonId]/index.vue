@@ -10,7 +10,6 @@ const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const {
   pending,
-  data,
-} = await useFetch<CoopResultResponse>(`${runtimeConfig.public.apiUrlBase}v1/results/${route.params.salmonId}`)
-const result = data.value
+  data: result,
+} = useFetch<CoopResultResponse>(`${runtimeConfig.public.apiUrlBase}v1/results/${route.params.salmonId}`)
 </script>
