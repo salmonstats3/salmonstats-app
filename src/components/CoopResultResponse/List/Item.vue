@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import dayjs from "dayjs"
+type Props = {
+  result: CoopResultResponse
+}
+const { result } = defineProps<Props>()
+</script>
+
 <template>
   <div class="coop-result-item" :class="result.isClear ? 'clear' : 'failure'"
     @click.top="$router.push(`results/${result.salmonId}`)">
@@ -20,14 +28,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import dayjs from "dayjs"
-type Props = {
-  result: CoopResultResponse
-}
-const { result } = defineProps<Props>()
-</script>
 
 <style scoped lang="scss">
 .coop-result-item {

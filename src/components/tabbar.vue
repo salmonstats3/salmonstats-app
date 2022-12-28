@@ -1,23 +1,33 @@
 <script setup lang="ts">
+const route = useRoute()
+
+function isActive(path: string): string {
+  return route.path === path ? 'active' : 'inactive'
+}
 </script>
 
 <template>
   <div class="tab-bar">
     <div class="tab-container">
       <ul>
-        <li class="home">
+        <li class="home" @click="$router.push('/')" :class="isActive('/')">
+          <img src="@/static/media/home.6fb032fc3abf676c6c3f7a1a2c42858d.svg" />
           <span>{{ $t('Common.Home') }}</span>
         </li>
-        <li class="schedules">
+        <li class="schedules" @click="$router.push('/schedules')" :class="isActive('/schedules')">
+          <img src="@/static/media/home.6fb032fc3abf676c6c3f7a1a2c42858d.svg" />
           <span>{{ $t('StageSchedule.Title') }}</span>
         </li>
-        <li class="records">
+        <li class=" records" @click="$router.push('/records')" :class="isActive('/records')">
+          <img src="@/static/media/home.6fb032fc3abf676c6c3f7a1a2c42858d.svg" />
           <span>{{ $t('Record.Title') }}</span>
         </li>
-        <li class="results">
+        <li class="results" :class="isActive('/results')">
+          <img src="@/static/media/home.6fb032fc3abf676c6c3f7a1a2c42858d.svg" />
           <span>{{ $t('CoopHistory.History') }}</span>
         </li>
-        <li class="settings">
+        <li class="settings" @click="$router.push('/settings')" :class="isActive('/settings')">
+          <img src="@/static/media/home.6fb032fc3abf676c6c3f7a1a2c42858d.svg" />
           <span>{{ $t('Settings.Title') }}</span>
         </li>
       </ul>
@@ -53,6 +63,16 @@
     background-repeat: no-repeat;
     background-size: 45px 120px;
     font-weight: 700;
+
+    img {
+      width: 24px;
+      height: 24px;
+      padding-top: 5px;
+    }
+
+    &.active {
+      color: var(--color-yellow);
+    }
   }
 
   .refresh-button {
