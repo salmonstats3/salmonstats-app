@@ -19,6 +19,13 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiUrlBase: process.env.NUXT_API_URL_BASE,
+      firebaseApiKey: process.env.NUXT_FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.NUXT_FIREBASE_AUTH_DOMAIN,
+      firebaseArojectId: process.env.NUXT_FIREBASE_AROJECT_ID,
+      firebaseAtorageBucket: process.env.NUXT_FIREBASE_ATORAGE_BUCKET,
+      firebaseAessagingSenderId: process.env.NUXT_FIREBASE_AESSAGING_SENDER_ID,
+      firebaseAppId: process.env.NUXT_FIREBASE_APP_ID,
+      firebaseAeasurementId: process.env.NUXT_FIREBASE_AEASUREMENT_ID,
     },
   },
   i18n: {

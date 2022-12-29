@@ -1,11 +1,12 @@
 <script setup lang="ts">
+  const router = useRouter()
 </script>
 
 <template>
   <div class="tab-bar">
     <div class="tab-container">
       <ul>
-        <li class="home">
+        <li class="home" @click="router.push('/')">
           <span>{{ $t('Common.Home') }}</span>
         </li>
         <li class="schedules">
@@ -17,7 +18,7 @@
         <li class="results">
           <span>{{ $t('CoopHistory.History') }}</span>
         </li>
-        <li class="settings">
+        <li class="settings" @click="router.push('/settings')">
           <span>{{ $t('Settings.Title') }}</span>
         </li>
       </ul>
