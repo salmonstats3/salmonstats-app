@@ -14,10 +14,7 @@ import USfr from "./locales/USfr.json";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ["@nuxtjs/i18n"],
-  css: [
-    "@/layouts/style.scss",
-    '@/assets/styles/app.scss',
-  ],
+  css: ["@/layouts/style.scss", "@/assets/styles/app.scss"],
   srcDir: "src/",
   runtimeConfig: {
     public: {
