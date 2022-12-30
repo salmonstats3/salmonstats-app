@@ -55,7 +55,6 @@ const { pending, refresh } = useFetch<ApiResults>(
 
 <style lang="scss" scoped>
 .page {
-  overflow: scroll;
   background-color: var(--color-background);
   width: 100%;
   min-width: 375px;
