@@ -3,69 +3,54 @@ import { ApiResults } from "@/types/ApiResponse";
 import Loading from "@/components/loading.vue"
 import InfiniteLoading from "v3-infinite-loading";
 const results = ref<CoopResultResponse[]>([]);
-const page = ref(1);
+const page = ref(0);
 const total = ref(0);
 
 const loadData = async ($state: any) => {
-  page.value++;
-  await fetchResults();
+  await refresh();
   if (results.value.length === 0) $state.complete();
   if (results.value.length % 25 === 0) {
     $state.loaded();
   } else {
     $state.complete();
   }
+  page.value++;
 };
 
 const runtimeConfig = useRuntimeConfig();
-const { pending, data } = await useLazyFetch<ApiResults>(
+const { pending, refresh } = useFetch<ApiResults>(
   `${runtimeConfig.public.apiUrlBase}v1/results`,
   {
-    key: `results-page-${page.value}`,
     params: {
       sort: "playTime",
       order: "desc",
-      offset: 25 * (page.value - 1),
     },
-  }
+    onRequest({ options }) {
+      // NOTE: offsetの値がずっと変わらなかったのでonRequestで制御
+      if(options.params) {
+        options.params.offset = 25 * page.value;
+      }
+    },
+    onResponse({ response }) {
+      const { results: resResults, total: resTotal } = response._data;
+      results.value = [...results.value, ...resResults];
+      total.value = resTotal;
+    },
+    immediate: false,
+  },
 );
-
-const fetchResults = async () => {
-  data.value = await $fetch<ApiResults>(
-    `${runtimeConfig.public.apiUrlBase}v1/results`,
-    {
-      method: "GET",
-      query: {
-        sort: "playTime",
-        order: "desc",
-        offset: 25 * (page.value - 1),
-      },
-    }
-  );
-};
-
-watchEffect(() => {
-  if (data.value?.results) {
-    results.value = [...results.value, ...data.value.results];
-    // 一覧 -> 詳細 -> 一覧（戻る）などの時に配列のデータがおかしい。重複があったり、IDの並びがおかしかったり。 useState とかで管理すれば大丈夫（？）
-    // results.value = [
-    //   ...results.value,
-    //   ...data.value.results.filter(newResult => results.value.map(e => e.salmonId).includes(newResult.salmonId))
-    // ]
-    total.value = data.value.total;
-  }
-});
 </script>
+
 <template>
-  <template v-if="pending">
-    <Loading />
-  </template>
-  <div class="page" v-else>
+  <div class="page">
     <div class="coop-result-list">
       <CoopResultResponseListItem v-for="result in results" :key="`result-${result.salmonId}`" :result="result" />
     </div>
-    <InfiniteLoading @infinite="loadData" class="inifinite-loading" />
+    <InfiniteLoading @infinite="loadData" class="infinite-loading" />
   </div>
+  <template v-if="pending">
+    <Loading />
+  </template>
 </template>
 
 <style lang="scss" scoped>
@@ -85,7 +70,7 @@ watchEffect(() => {
   }
 }
 
-.inifinite-loading {
+.infinite-loading {
   margin: 0 auto;
   text-align: center;
 }
