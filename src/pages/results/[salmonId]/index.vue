@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import {useTitle} from "~/composables/useTitle";
+import {useRoute} from "vue-router";
+import {useRuntimeConfig} from "#app";
+
+useTitle().setTitle('index')
+
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const {
