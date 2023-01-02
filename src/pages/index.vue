@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ResultsView from "@/components/tabs/results.vue"
+import ResultsView from '@/components/tabs/results.vue'
 </script>
 
 <template>

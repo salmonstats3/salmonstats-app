@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { useTitle } from "~/composables/useTitle";
 import { useDisplay } from 'vuetify'
-import {ref} from "@vue/reactivity";
+import { ref } from 'vue'
+import { useTitle } from '~/composables/useTitle'
 
-const {state} = useTitle()
+const { state } = useTitle()
 const display = ref(useDisplay())
 </script>
 
 <template>
-    <v-app-bar color="background" fixed>
-      <v-app-bar-nav-icon v-show="display.mdAndUp" />
-      <v-app-bar-title>{{ state.title }}</v-app-bar-title>
+  <v-app-bar color="background" fixed>
+    <v-app-bar-nav-icon v-show="display.mdAndUp" />
+    <v-app-bar-title>{{ state.title }}</v-app-bar-title>
 
-      <v-spacer />
-      TODO: login user
-    </v-app-bar>
+    <v-spacer />
+    TODO: login user
+  </v-app-bar>
 </template>
 
 <style scoped lang="scss">

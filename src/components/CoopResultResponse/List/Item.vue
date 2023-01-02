@@ -1,6 +1,9 @@
 <template>
-  <div class="coop-result-item" :class="result.isClear ? 'clear' : 'failure'"
-    @click.top="$router.push(`results/${result.salmonId}`)">
+  <div
+    class="coop-result-item"
+    :class="result.isClear ? 'clear' : 'failure'"
+    @click.top="$router.push(`results/${result.salmonId}`)"
+  >
     <div class="coop-result-job-result" :class="result.isClear ? 'clear' : 'failure'">
       <span>{{ result.isClear ? $t('CoopHistory.Clear') : $t('CoopHistory.Failure') }}</span>
     </div>
@@ -22,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import dayjs from "dayjs"
+import dayjs from 'dayjs'
 type Props = {
   result: CoopResultResponse
 }

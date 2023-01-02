@@ -22,7 +22,7 @@
         </li>
       </ul>
     </div>
-    <button class="refresh-button"></button>
+    <button class="refresh-button" />
   </div>
 </template>
 

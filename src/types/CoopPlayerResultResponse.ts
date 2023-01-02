@@ -1,4 +1,4 @@
-type Species  = "INKLING" | "OCTOLING"
+type Species = 'INKLING' | 'OCTOLING'
 type CoopPlayerResultResponse = {
   pid: string
   // pid:

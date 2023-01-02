@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useTitle} from "~/composables/useTitle";
-import {useRoute} from "vue-router";
-import {useRuntimeConfig} from "#app";
+import { useRoute } from 'vue-router'
+import { useRuntimeConfig } from '#app'
+import { useTitle } from '~/composables/useTitle'
 
 useTitle().setTitle('index')
 
@@ -9,7 +9,7 @@ const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const {
   pending,
-  data: result,
+  data: result
 } = useFetch<CoopResultResponse>(`${runtimeConfig.public.apiUrlBase}v1/results/${route.params.salmonId}`)
 </script>
 

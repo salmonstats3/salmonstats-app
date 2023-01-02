@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import dayjs from "dayjs";
-import { transpose } from 'matrix-transpose';
+import dayjs from 'dayjs'
+import { transpose } from 'matrix-transpose'
 import Special from '@/components/models/special/Image.vue'
 type Props = {
   result: CoopResultResponse;
 };
-const { result } = defineProps<Props>();
+const { result } = defineProps<Props>()
 const specialUsage: number[][] = transpose(result.players.map((player) => {
   const specialId: number = player.specialId
-  return player.specialCounts.map((count) => Array(count).fill(specialId))
-})).map((value) => value.flatMap((value) => value))
+  return player.specialCounts.map(count => Array(count).fill(specialId))
+})).map(value => value.flatMap(value => value))
 </script>
 
 <template>
@@ -22,12 +22,12 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
         <div class="coop-result-ikura">
           <div>
             <small>{{ $t("CoopHistory.GoldenDeliverCount") }}</small>
-            <br />
+            <br>
             <span class="ikura-num">{{ result.goldenIkuraNum }}</span>
           </div>
           <div>
             <small>{{ $t("CoopHistory.DeliverCount") }}</small>
-            <br />
+            <br>
             <span class="ikura-num">{{ result.ikuraNum }}</span>
           </div>
         </div>
@@ -37,13 +37,13 @@ const specialUsage: number[][] = transpose(result.players.map((player) => {
       </div>
     </div>
     <div class="coop-result-wave-results">
-      <ModelsWaveCoopResultResponse class="wave-item" v-for="wave in result.waves" :wave="wave" :key="wave.waveId" />
+      <ModelsWaveCoopResultResponse v-for="wave in result.waves" :key="wave.waveId" class="wave-item" :wave="wave" />
     </div>
     <div class="coop-result-wave-results coop-result-special">
-      <div class="special-images" v-for="usages in specialUsage">
+      <div v-for="usages in specialUsage" class="special-images">
         <template v-for="specialId in usages">
           <span class="rounded-icon-wrapper">
-            <Special :specialId="specialId"></Special>
+            <Special :special-id="specialId" />
           </span>
         </template>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <img class="loading" src="@/static/media/loading.152225138e7c914c7d3f.gif" />
+  <img class="loading" src="@/static/media/loading.152225138e7c914c7d3f.gif">
 </template>
 
 <style scoped lang="scss">

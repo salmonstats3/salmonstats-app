@@ -1,13 +1,13 @@
-import {defineStore} from "pinia";
-import {reactive} from "@vue/reactivity";
-import {useI18n} from "vue-i18n";
+import { defineStore } from 'pinia'
+import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface State {
   title: string
 }
 
 export const useTitle = defineStore('title', () => {
-  const { t } = useI18n();
+  const { t } = useI18n()
   const state = reactive<State>({
     title: 'no title'
   })

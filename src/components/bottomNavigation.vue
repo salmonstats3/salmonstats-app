@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {ref} from "@vue/reactivity";
-import {useDisplay} from "vuetify";
+import { ref } from 'vue'
+import { useDisplay } from 'vuetify'
 
 const display = ref(useDisplay())
 </script>

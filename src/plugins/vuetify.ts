@@ -1,8 +1,8 @@
-import { createVuetify } from "vuetify";
-import * as components from "vuetify/components";
-import * as directives from "vuetify/directives";
-import {createPinia} from "pinia";
-import {defineNuxtPlugin} from "#app";
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import { createPinia } from 'pinia'
+import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const myCustomTheme = {
@@ -15,10 +15,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       error: '#B00020',
       info: '#2196F3',
       success: '#4CAF50',
-      warning: '#FB8C00',
+      warning: '#FB8C00'
     }
   }
-
 
   const vuetify = createVuetify({
     components,
@@ -26,15 +25,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     theme: {
       defaultTheme: 'myCustomTheme',
       themes: {
-        myCustomTheme,
+        myCustomTheme
       }
     }
-  });
+  })
 
-  nuxtApp.vueApp.use(vuetify);
+  nuxtApp.vueApp.use(vuetify)
 
-
-  //TODO 本来別ファイルで定義するべき
+  // TODO 本来別ファイルで定義するべき
   const pinia = createPinia()
   nuxtApp.vueApp.use(pinia)
-});
+})

@@ -1,4 +1,4 @@
-type EventId = "WATER_LEVELS" | "RUSH" | "GOLDIE_SEEKING" | "GRILLER" | "FOG" | "THE_MOTHERSHIP" | "COHOCK_CHARGE" | "GIANT_TORNADO" | "MUDMOUTH"
+type EventId = 'WATER_LEVELS' | 'RUSH' | 'GOLDIE_SEEKING' | 'GRILLER' | 'FOG' | 'THE_MOTHERSHIP' | 'COHOCK_CHARGE' | 'GIANT_TORNADO' | 'MUDMOUTH'
 // enum:
 //   - WATER_LEVELS
 //   - RUSH
@@ -10,7 +10,7 @@ type EventId = "WATER_LEVELS" | "RUSH" | "GOLDIE_SEEKING" | "GRILLER" | "FOG" | 
 //   - GIANT_TORNADO
 //   - MUDMOUTH
 
-type WaterId = "LOW_TIDE" |"NORMAL" |"HIGH_TIDE"
+type WaterId = 'LOW_TIDE' |'NORMAL' |'HIGH_TIDE'
 // type: string
 // enum:
 //   - LOW_TIDE

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import TabBar from "@/components/tabbar.vue";
-import BottomNavigation from "~/components/bottomNavigation.vue";
+import TabBar from '@/components/tabbar.vue'
+import BottomNavigation from '~/components/bottomNavigation.vue'
 </script>
 
 <template>
-  <v-app >
-    <Header style="margin-bottom: 64px"/>
+  <v-app>
+    <Header style="margin-bottom: 64px" />
     <div class="container">
       <slot />
       <!-- <TabBar /> -->
