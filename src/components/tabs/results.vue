@@ -1,44 +1,44 @@
 <script setup lang="ts">
-import { ApiResults } from "@/types/ApiResponse";
-import Loading from "@/components/loading.vue"
-import InfiniteLoading from "v3-infinite-loading";
-const results = ref<CoopResultResponse[]>([]);
-const page = ref(0);
-const total = ref(0);
+import InfiniteLoading from 'v3-infinite-loading'
+import { ApiResults } from '@/types/ApiResponse'
+import Loading from '@/components/loading.vue'
+const results = ref<CoopResultResponse[]>([])
+const page = ref(0)
+const total = ref(0)
 
 const loadData = async ($state: any) => {
-  await refresh();
-  if (results.value.length === 0) $state.complete();
+  await refresh()
+  if (results.value.length === 0) { $state.complete() }
   if (results.value.length % 25 === 0) {
-    $state.loaded();
+    $state.loaded()
   } else {
-    $state.complete();
+    $state.complete()
   }
-  page.value++;
-};
+  page.value++
+}
 
-const runtimeConfig = useRuntimeConfig();
+const runtimeConfig = useRuntimeConfig()
 const { pending, refresh } = useFetch<ApiResults>(
   `${runtimeConfig.public.apiUrlBase}v1/results`,
   {
     params: {
-      sort: "playTime",
-      order: "desc",
+      sort: 'playTime',
+      order: 'desc'
     },
-    onRequest({ options }) {
+    onRequest ({ options }) {
       // NOTE: offsetの値がずっと変わらなかったのでonRequestで制御
-      if(options.params) {
-        options.params.offset = 25 * page.value;
+      if (options.params) {
+        options.params.offset = 25 * page.value
       }
     },
-    onResponse({ response }) {
-      const { results: resResults, total: resTotal } = response._data;
-      results.value = [...results.value, ...resResults];
-      total.value = resTotal;
+    onResponse ({ response }) {
+      const { results: resResults, total: resTotal } = response._data
+      results.value = [...results.value, ...resResults]
+      total.value = resTotal
     },
-    immediate: false,
-  },
-);
+    immediate: false
+  }
+)
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const { pending, refresh } = useFetch<ApiResults>(
     <div class="coop-result-list">
       <CoopResultResponseListItem v-for="result in results" :key="`result-${result.salmonId}`" :result="result" />
     </div>
-    <InfiniteLoading @infinite="loadData" class="infinite-loading" />
+    <InfiniteLoading class="infinite-loading" @infinite="loadData" />
   </div>
   <template v-if="pending">
     <Loading />

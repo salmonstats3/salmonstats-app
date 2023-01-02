@@ -1,18 +1,24 @@
 <script setup lang="ts">
-import TabBar from "@/components/tabbar.vue";
+import TabBar from '@/components/tabbar.vue'
+import BottomNavigation from '~/components/bottomNavigation.vue'
 </script>
 
 <template>
-  <div class="container">
-    <Header />
-    <slot />
-    <TabBar />
-  </div>
-  <Footer />
+  <v-app>
+    <Header style="margin-bottom: 64px" />
+    <v-main>
+      <div class="container">
+        <slot />
+        <!-- <TabBar /> -->
+      </div>
+    </v-main>
+    <BottomNavigation />
+  </v-app>
 </template>
 
 <style lang="scss" scoped>
 .container {
+  padding-top: 64px;
   background-color: var(--color-background);
   display: flex;
   flex-direction: column;

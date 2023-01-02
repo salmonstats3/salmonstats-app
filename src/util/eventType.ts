@@ -1,7 +1,7 @@
 
 // @returnType locale CoopEvent のKeyに対応
 export const typeToString = (eventType: EventType[keyof EventType]) => {
-  switch(eventType) {
+  switch (eventType) {
     case 0: return 'Water'
       // Water: '-' 昼
     case 1: return 'Rush'

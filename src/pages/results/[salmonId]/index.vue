@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
+import { useRuntimeConfig } from '#app'
+import { useTitle } from '~/composables/useTitle'
+
+useTitle().setTitle('schedules-id-results-id')
+
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const {
   pending,
-  data: result,
+  data: result
 } = useFetch<CoopResultResponse>(`${runtimeConfig.public.apiUrlBase}v1/results/${route.params.salmonId}`)
 </script>
 

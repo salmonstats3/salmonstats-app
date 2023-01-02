@@ -4,7 +4,7 @@
 type Props = {
   weaponId: number
 };
-const { weaponId } = defineProps<Props>();
+const { weaponId } = defineProps<Props>()
 </script>
 
 <template>

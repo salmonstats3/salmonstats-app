@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { typeToString } from "@/util/eventType"
+import { typeToString } from '@/util/eventType'
 type Props = {
-  wave: CoopResultResponse["waves"][number];
+  wave: CoopResultResponse['waves'][number];
 };
-const { wave } = defineProps<Props>();
+const { wave } = defineProps<Props>()
 
 const waterLevel = (waterLevel: number) => {
   switch (waterLevel) {
     case 0:
-      return "low"
+      return 'low'
     case 1:
-      return "middle"
+      return 'middle'
     case 2:
-      return "high"
+      return 'high'
   }
 }
 </script>
@@ -20,7 +20,7 @@ const waterLevel = (waterLevel: number) => {
 <template>
   <div class="wave-result">
     <div class="wave-result-content">
-      <div class="wave-water-level" :class="waterLevel(wave.waterLevel)"></div>
+      <div class="wave-water-level" :class="waterLevel(wave.waterLevel)" />
       <div class="wave-num">
         <span v-if="wave.waveId != 4">WAVE {{ wave.waveId }}</span>
         <span v-else>{{ $t('CoopHistory.ExWave') }}</span>
@@ -38,7 +38,9 @@ const waterLevel = (waterLevel: number) => {
         <img src="@/assets/images/gold-ikura.542af9c3faf6cd81f558fb11d2206995.svg" alt="gold-ikura">
         <span class="num">{{ wave.goldenIkuraPopNum }}</span>
       </div>
-      <div class="pop-num-note">{{ $t('CoopHistory.Available') }}</div>
+      <div class="pop-num-note">
+        {{ $t('CoopHistory.Available') }}
+      </div>
     </div>
   </div>
 </template>
