@@ -6,10 +6,12 @@ import BottomNavigation from '~/components/bottomNavigation.vue'
 <template>
   <v-app>
     <Header style="margin-bottom: 64px" />
-    <div class="container">
-      <slot />
-      <!-- <TabBar /> -->
-    </div>
+    <v-main>
+      <div class="container">
+        <slot />
+        <!-- <TabBar /> -->
+      </div>
+    </v-main>
     <BottomNavigation />
   </v-app>
 </template>

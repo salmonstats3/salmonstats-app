@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import { useRuntimeConfig } from '#app'
 import { useTitle } from '~/composables/useTitle'
 
-useTitle().setTitle('index')
+useTitle().setTitle('schedules-id-results-id')
 
 const route = useRoute()
 const runtimeConfig = useRuntimeConfig()

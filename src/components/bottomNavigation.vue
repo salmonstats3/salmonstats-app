@@ -6,7 +6,7 @@ const display = ref(useDisplay())
 </script>
 
 <template>
-  <v-bottom-navigation v-show="display.smAndDown">
+  <v-bottom-navigation v-show="display.xs" app class="bottom-navigation">
     <v-btn to="/">
       <span>Home</span>
       <v-icon>mdi-home</v-icon>
@@ -27,4 +27,7 @@ const display = ref(useDisplay())
 </template>
 
 <style scoped>
+.bottom-navigation {
+  width: 100%
+}
 </style>

@@ -8,7 +8,7 @@ const display = ref(useDisplay())
 </script>
 
 <template>
-  <v-app-bar color="background" fixed>
+  <v-app-bar color="background" app fixed class="app-bar">
     <v-app-bar-nav-icon v-show="display.mdAndUp" />
     <v-app-bar-title>{{ state.title }}</v-app-bar-title>
 
@@ -18,5 +18,7 @@ const display = ref(useDisplay())
 </template>
 
 <style scoped lang="scss">
-// ここになにか書かないとエラーになるのでコメント記載する
+.app-bar {
+  width: 100%
+}
 </style>
