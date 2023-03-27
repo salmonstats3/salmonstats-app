@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import dayjs from "dayjs"
-import Weapon from "@/components/models/weapon/Image.vue"
-import Stage from "@/components/models/stage/Image.vue"
+import dayjs from 'dayjs'
+import Weapon from '@/components/models/weapon/Image.vue'
+import Stage from '@/components/models/stage/Image.vue'
 
 type Props = {
   schedule: CoopScheduleResponse
@@ -12,12 +12,12 @@ const { schedule } = defineProps<Props>()
 <template>
   <div class="schedule-stage">
     <div class="schedule-stage-content">
-      <Stage :stageId="schedule.stageId" />
+      <Stage :stage-id="schedule.stageId" />
     </div>
     <div class="schedule-weapon-list">
       <div class="schedule-weapon-list-wrapper">
         <template v-for="weaponId in schedule.weaponList">
-          <Weapon :weaponId="weaponId" />
+          <Weapon :weapon-id="weaponId" />
         </template>
       </div>
     </div>

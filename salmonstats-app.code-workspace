@@ -4,5 +4,15 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"volar.autoCompleteRefs": true,
+		"volar.doctor.checkVueTsc": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"extensions": {
+		"recommendations": [
+			"esbenp.prettier-vscode",
+			"vue.volar"
+		]
+	}
 }

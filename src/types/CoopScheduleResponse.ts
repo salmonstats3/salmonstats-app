@@ -4,7 +4,7 @@ type CoopScheduleResponse = {
   endTime: Date;
   weaponList: number[];
   rareWeapon: number | null;
-  mode: "REGULAR" | "BIG_RUN";
-  rule: "REGULAR" | "PRIVATE_CUSTOM" | "PRIVATE_SCENARIO";
-  setting: "CoopNormalSetting" | "CoopBigRunSetting";
+  mode: 'REGULAR' | 'BIG_RUN';
+  rule: 'REGULAR' | 'PRIVATE_CUSTOM' | 'PRIVATE_SCENARIO';
+  setting: 'CoopNormalSetting' | 'CoopBigRunSetting';
 };

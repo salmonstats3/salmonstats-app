@@ -6,7 +6,7 @@ useTitle().setTitle('schedules')
 const page = ref(0)
 
 const runtimeConfig = useRuntimeConfig()
-const {data: schedules, pending, refresh} = useFetch<ApiResults>(
+const { data: schedules, pending, refresh } = useFetch<ApiResults>(
     `${runtimeConfig.public.apiUrlBase}v1/schedules`,
     {
       params: {},
@@ -15,8 +15,8 @@ const {data: schedules, pending, refresh} = useFetch<ApiResults>(
         if (options.params) {
           options.params.offset = 25 * page.value
         }
-      },
-    },
+      }
+    }
 )
 
 </script>

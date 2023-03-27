@@ -33,6 +33,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(vuetify)
 
   // TODO 本来別ファイルで定義するべき
-  const pinia = createPinia()
-  nuxtApp.vueApp.use(pinia)
+  // const pinia = createPinia()
+  // nuxtApp.vueApp.use(pinia)
 })
