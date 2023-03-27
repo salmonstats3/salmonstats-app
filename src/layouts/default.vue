@@ -4,13 +4,11 @@ import BottomNavigation from '~/components/bottomNavigation.vue'
 </script>
 
 <template>
-  <v-app>
+  <v-app style="background-color: var(--color-background)">
     <Header style="margin-bottom: 64px" />
     <v-main>
-      <div class="container">
-        <slot />
-        <!-- <TabBar /> -->
-      </div>
+      <slot />
+      <!-- <TabBar /> -->
     </v-main>
     <BottomNavigation />
   </v-app>
