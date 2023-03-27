@@ -14,11 +14,14 @@ import USfr from "./locales/USfr.json";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  plugins: [
-    '~/plugins/vuetify',
+  plugins: ["~/plugins/vuetify"],
+  modules: ["@nuxtjs/i18n", "@pinia/nuxt"],
+  css: [
+    "@/layouts/style.scss",
+    "@/assets/styles/app.scss",
+    "vuetify/lib/styles/main.sass",
+    "mdi/css/materialdesignicons.min.css",
   ],
-  modules: ["@nuxtjs/i18n"],
-  css: ["@/layouts/style.scss", "@/assets/styles/app.scss", "vuetify/lib/styles/main.sass", "mdi/css/materialdesignicons.min.css"],
   srcDir: "src/",
   build: {
     transpile: ["vuetify"],
@@ -32,7 +35,7 @@ export default defineNuxtConfig({
     defaultLocale: "JPja",
     vueI18n: {
       messages: {
-        JPja: {...JPja, ...JPjaCustom},
+        JPja: { ...JPja, ...JPjaCustom },
         USen: USen,
         CNzh: CNzh,
         EUde: EUde,
